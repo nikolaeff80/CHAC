@@ -20,7 +20,7 @@ def insert_date_in_file(date_tc):
 	:return:
 	"""
 	with open('date_list.txt', 'a+', encoding='utf-8') as date_list:
-		date_list.writelines(date_tc)
+		date_list.writelines(['{}\n'.format(date_tc)])
 
 
 def get_date():
@@ -29,7 +29,7 @@ def get_date():
 	:return:
 	"""
 	with open('date_list.txt', 'r', encoding='utf-8') as date_list:
-		dl = date_list.readlines()
+		dl = str(date_list.readlines())
 		print(dl)
 	return dl
 
@@ -45,8 +45,8 @@ def main_prog():
 	print(current_date)
 	print(get_date())
 	print(current_date, last_date_in_file)
-	print(str(current_date) in last_date_in_file)
-
+	print(current_date in last_date_in_file)
+	
 	if current_date in last_date_in_file:
 		os.system("shutdown -p -f")
 	else:
